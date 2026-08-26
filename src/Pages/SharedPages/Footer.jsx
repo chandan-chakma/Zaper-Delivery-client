@@ -22,7 +22,7 @@ const Footer = () => {
                     business shipments — we deliver on time, every time.
                 </p>
             </aside>
-             <nav className='flex gap-5 font-semibold text-accent text-xl'>
+             <nav className='flex flex-col md:flex-row gap-5 font-semibold text-accent text-xl'>
                 {list}                
             </nav>
             <nav>

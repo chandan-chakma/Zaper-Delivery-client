@@ -7,6 +7,10 @@ import monstar from '../../assets/brands/moonstar.png';
 import star from '../../assets/brands/star.png';
 import starPople from '../../assets/brands/start_people.png';
 import randstad from '../../assets/brands/randstad.png'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay} from 'swiper/modules';
+import 'swiper/css';
+const brandLogo = [casino, amazon, monstar, star, starPople, randstad];
 const Service = () => {
     return (
         <div className='p-5'>
@@ -67,7 +71,7 @@ const Service = () => {
                 </div>
 
                 <div className='grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-5 justify-center items-center'>
-                    <div className="card bg-base-100 w-full h-70 shadow-sm">
+                    <div className="card bg-base-100 w-full h-70 shadow-sm mt-5">
                         <figure className='w-[70px] h-[70px] mx-auto bg-[#EEEDFC] rounded-full mt-5'>
                             <img className=''
                                 src={serviceImg}
@@ -80,7 +84,7 @@ const Service = () => {
                             <p className='text-black'>We deliver parcels nationwide with home delivery in every district, ensuring your products reach customers within 48–72 hours.</p>
                         </div>
                     </div>
-                    <div className="card bg-base-100 w-full h-70 shadow-sm">
+                    <div className="card bg-base-100 w-full h-70 shadow-sm mt-5">
                         <figure className='w-[70px] h-[70px] mx-auto bg-[#EEEDFC] rounded-full  mt-5'>
                             <img className=''
                                 src={serviceImg}
@@ -93,7 +97,7 @@ const Service = () => {
                             <p className='text-black'>We deliver parcels nationwide with home delivery in every district, ensuring your products reach customers within 48–72 hours.</p>
                         </div>
                     </div>
-                    <div className="card bg-base-100 w-full h-70 shadow-sm">
+                    <div className="card bg-base-100 w-full h-70 shadow-sm mt-5">
                         <figure className='w-[70px] h-[70px] mx-auto bg-[#EEEDFC] rounded-full  mt-5'>
                             <img className=''
                                 src={serviceImg}
@@ -106,7 +110,7 @@ const Service = () => {
                             <p className='text-black'>We also offer customized service with inventory management support, online order processing, packaging, and after sales support.</p>
                         </div>
                     </div>
-                    <div className="card bg-base-100 w-full h-70 shadow-sm">
+                    <div className="card bg-base-100 w-full h-70 shadow-sm mt-5">
                         <figure className='w-[70px] h-[70px] mx-auto bg-[#EEEDFC] rounded-full  mt-5'>
                             <img className=''
                                 src={serviceImg}
@@ -119,7 +123,7 @@ const Service = () => {
                             <p className='text-black'>100% cash on delivery anywhere in Bangladesh with guaranteed safety of your product.</p>
                         </div>
                     </div>
-                    <div className="card bg-base-100 w-full h-70 shadow-sm">
+                    <div className="card bg-base-100 w-full h-70 shadow-sm mt-5">
                         <figure className='w-[70px] h-[70px] mx-auto bg-[#EEEDFC] rounded-full  mt-5'>
                             <img className=''
                                 src={serviceImg}
@@ -132,7 +136,7 @@ const Service = () => {
                             <p className='text-black'>Customized corporate services which includes warehouse and inventory management support.</p>
                         </div>
                     </div>
-                    <div className="card bg-base-100 w-full h-70 shadow-sm">
+                    <div className="card bg-base-100 w-full h-70 shadow-sm mt-5">
                         <figure className='w-[70px] h-[70px] mx-auto bg-[#EEEDFC] rounded-full  mt-5'>
                             <img className=''
                                 src={serviceImg}
@@ -152,18 +156,35 @@ const Service = () => {
 
 
             {/* sales team  */}
-
-            <div className='my-8'>
-                <h1 className='text-secondary font-bold text-xl text-center'>We have helped thousands of sales teams</h1>
-                <div className='flex flex-col gap-5 md:flex-row md:gap-10 justify-center mt-5'>
-                    <img src={casino} alt="" />
-                    <img src={amazon} alt="" />
-                    <img src={monstar} alt="" />
-                    <img src={star} alt="" />
-                    <img src={starPople} alt="" />
-                    <img src={randstad} alt="" />
-                </div>
+            <div className='my-5'>
+                <h1 className='text-center font-bold text-xl text-secondary my-10'>We have helped thousand of sales teams</h1>
+                <Swiper
+                    slidesPerView={4}
+                    spaceBetween={30}
+                    centeredSlides={true}
+                    autoplay={{
+                        delay: 500,
+                        disableOnInteraction: false,
+                    }}
+                    modules={[Autoplay]}
+                >
+                    {brandLogo.map((logo, index) => 
+                        <SwiperSlide key={index}><img src={logo} alt="" /></SwiperSlide>
+                   )}
+                    
+                    {/* 
+                    <SwiperSlide>Slide 3</SwiperSlide>
+                    <SwiperSlide>Slide 4</SwiperSlide>
+                    <SwiperSlide>Slide 5</SwiperSlide>
+                    <SwiperSlide>Slide 6</SwiperSlide>
+                    <SwiperSlide>Slide 7</SwiperSlide>
+                    <SwiperSlide>Slide 8</SwiperSlide>
+                    <SwiperSlide>Slide 9</SwiperSlide> */}
+                </Swiper>
             </div>
+
+
+
        
         </div>
     );

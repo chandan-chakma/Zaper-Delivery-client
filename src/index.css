@@ -14,3 +14,15 @@
 *{
   font-family: "Urbanist", sans-serif;
 }
+/* 
+.swiper-slide {
+  opacity: 0.4;
+  transform: scale(0.75);
+  transition: all 0.5s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.15);
+  z-index: 10;
+} */
