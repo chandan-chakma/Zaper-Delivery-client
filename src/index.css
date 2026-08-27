@@ -10,12 +10,15 @@
   --color-accent: #DADADA;
   --color-black: #0B0B0B;
 }
-
+body{
+  background-color: #F5F5F5;
+  padding-top: 1px;
+}
 *{
   font-family: "Urbanist", sans-serif;
 }
-/* 
-.swiper-slide {
+
+/* .swiper-slide {
   opacity: 0.4;
   transform: scale(0.75);
   transition: all 0.5s ease;

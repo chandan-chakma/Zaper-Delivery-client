@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../Components/Logo/Logo.jsx';
+import Logo from '../../Components/Home/Logo/Logo.jsx';
 import { NavLink } from 'react-router';
 import { FaFacebookSquare, FaLinkedin, FaTwitterSquare, FaYoutube, FaYoutubeSquare } from "react-icons/fa";
 const Footer = () => {

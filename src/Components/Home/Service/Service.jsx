@@ -1,12 +1,12 @@
 import React from 'react';
 import { GiPickOfDestiny } from "react-icons/gi";
-import serviceImg from '../../assets/service.png'
-import casino from '../../assets/brands/casio.png';
-import amazon from '../../assets/brands/amazon.png';
-import monstar from '../../assets/brands/moonstar.png';
-import star from '../../assets/brands/star.png';
-import starPople from '../../assets/brands/start_people.png';
-import randstad from '../../assets/brands/randstad.png'
+import serviceImg from '../../../assets/service.png'
+import casino from '../../../assets/brands/casio.png';
+import amazon from '../../../assets/brands/amazon.png';
+import monstar from '../../../assets/brands/moonstar.png';
+import star from '../../../assets/brands/star.png';
+import starPople from '../../../assets/brands/start_people.png';
+import randstad from '../../../assets/brands/randstad.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay} from 'swiper/modules';
 import 'swiper/css';
@@ -62,7 +62,7 @@ const Service = () => {
 
             {/* Service Section  */}
 
-            <div className='bg-secondary p-2 md:p-10 mt-5'>
+            <div className='bg-secondary rounded-2xl p-2 md:p-10 mt-5'>
                 <div className='text-center'>
                     <h1 className='text-white text-3xl'>Our Services</h1>
                     <p className='text-accent font-normal my-3'>Enjoy fast, reliable parcel delivery with real-time tracking and zero hassle. From personal packages to
@@ -171,15 +171,7 @@ const Service = () => {
                     {brandLogo.map((logo, index) => 
                         <SwiperSlide key={index}><img src={logo} alt="" /></SwiperSlide>
                    )}
-                    
-                    {/* 
-                    <SwiperSlide>Slide 3</SwiperSlide>
-                    <SwiperSlide>Slide 4</SwiperSlide>
-                    <SwiperSlide>Slide 5</SwiperSlide>
-                    <SwiperSlide>Slide 6</SwiperSlide>
-                    <SwiperSlide>Slide 7</SwiperSlide>
-                    <SwiperSlide>Slide 8</SwiperSlide>
-                    <SwiperSlide>Slide 9</SwiperSlide> */}
+                      
                 </Swiper>
             </div>
 
