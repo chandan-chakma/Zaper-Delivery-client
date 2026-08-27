@@ -7,7 +7,7 @@ import { BsArrowUpRight, BsCircleFill, BsFillArrowUpRightCircleFill } from "reac
 const Navbar = () => {
     const list = <>
         <NavLink to="">Services</NavLink>
-        <NavLink to="Coverage">Coverage</NavLink>
+        <NavLink to="/coverage">Coverage</NavLink>
         <NavLink to="">About Us</NavLink>
         <NavLink to="">Pricing</NavLink>
         <NavLink to="">Blog</NavLink>
