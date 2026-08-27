@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../Components/Home/Logo/Logo.jsx';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { BsArrowUpRight, BsCircleFill, BsFillArrowUpRightCircleFill } from "react-icons/bs";
 
 
@@ -15,7 +15,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm my-10">
+            <div className="navbar bg-base-100 shadow-sm md:my-10 ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -35,10 +35,10 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className='btn mr-2'>Sign In</button>
-                    <button className='btn'>Be a rider</button>
+                    <Link to='/login' className='btn mr-2'>Sign In</Link>
+                    <button className='btn hidden md:block'>Be a rider</button>
                     {/* <BsFillArrowUpRightCircleFill className='w-10 h-10 text-primary' /> */}
-                    <div className="relative w-[40px] h-[40px]">
+                    <div className="relative hidden w-[40px] h-[40px] md:block">
                         <BsCircleFill
                             size={40}
                             className="absolute text-black"
