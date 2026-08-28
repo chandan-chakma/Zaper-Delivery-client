@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form"
 import { Link } from 'react-router';
 import UseAuth from '../../../Hooks/UseAuth.jsx';
+import SocialLogin from '../SocialLogin/SocialLogin.jsx';
 const Registration = () => {
 
     const { createEmailUser } = UseAuth();
@@ -17,7 +18,7 @@ const Registration = () => {
             })
     }
     return (
-        <div className='mt-10'>
+        <div className='mt-10 w-full mx-auto max-w-sm'>
             <h1 className='text-3xl font-bold text-black'>Welcome Back</h1>
             <h3 className='font-semibold my-4'>Connect with ZapShift</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -36,6 +37,8 @@ const Registration = () => {
                 </fieldset>
             </form>
             <p className='font-semibold mt-4'>Already have an accound please <Link className='text-blue-500' to='/login'>Log in</Link></p>
+        
+            <SocialLogin></SocialLogin>
         </div>
     );
 };

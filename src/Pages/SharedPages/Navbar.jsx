@@ -2,13 +2,19 @@ import React from 'react';
 import Logo from '../../Components/Home/Logo/Logo.jsx';
 import { Link, NavLink } from 'react-router';
 import { BsArrowUpRight, BsCircleFill, BsFillArrowUpRightCircleFill } from "react-icons/bs";
+import UseAuth from '../../Hooks/UseAuth.jsx';
+import { AuthContext } from '../../AuthProvider/AuthProvider.jsx';
 
 
 const Navbar = () => {
+    const { user, logOut } = UseAuth(AuthContext);
+    const handleLogout = () => {
+        logOut()
+    }
     const list = <>
         <NavLink to="">Services</NavLink>
         <NavLink to="/coverage">Coverage</NavLink>
-        <NavLink to="">About Us</NavLink>
+        <NavLink to="/login">About Us</NavLink>
         <NavLink to="">Pricing</NavLink>
         <NavLink to="">Blog</NavLink>
         <NavLink to="">Contact</NavLink>
@@ -27,7 +33,8 @@ const Navbar = () => {
                             {list}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl"><Logo></Logo></a>
+
+                    <Logo></Logo>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-6">
@@ -35,8 +42,13 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/login' className='btn mr-2'>Sign In</Link>
-                    <button className='btn hidden md:block'>Be a rider</button>
+                    {
+                        !user ? <Link to='/login' className='btn mr-2'>Sign In</Link>
+                            :
+                            <button onClick={handleLogout} className='btn mr-2'>LogOut</button>
+                    }
+                    {/* <Link to='/login' className='btn mr-2'>Sign In</Link> */}
+                    <button className='btn btn-primary text-black hidden md:block'>Be a rider</button>
                     {/* <BsFillArrowUpRightCircleFill className='w-10 h-10 text-primary' /> */}
                     <div className="relative hidden w-[40px] h-[40px] md:block">
                         <BsCircleFill
