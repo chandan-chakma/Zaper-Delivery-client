@@ -1,13 +1,25 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
 import { Link } from 'react-router';
+import UseAuth from '../../../Hooks/UseAuth.jsx';
 const Registration = () => {
+
+    const { createEmailUser } = UseAuth();
     const { register, formState: { errors }, handleSubmit,  } = useForm()
-    const onSubmit =(data)=>console.log(data)
+    const onSubmit = (data) => {
+        console.log(data);
+        createEmailUser(data.email, data.password)
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     return (
         <div className='mt-10'>
             <h1 className='text-3xl font-bold text-black'>Welcome Back</h1>
-            <h3 className='font-semibold'>Login with ZapShift</h3>
+            <h3 className='font-semibold my-4'>Connect with ZapShift</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <fieldset className="fieldset">
                     <label className="label">Email</label>
@@ -23,7 +35,7 @@ const Registration = () => {
                     <button className="btn btn-neutral mt-4 w-80">Register</button>
                 </fieldset>
             </form>
-            <p className='font-semibold mt-4'>Already have an accound please <Link className='text-blue-500' to='/registration'>Log in</Link></p>
+            <p className='font-semibold mt-4'>Already have an accound please <Link className='text-blue-500' to='/login'>Log in</Link></p>
         </div>
     );
 };
