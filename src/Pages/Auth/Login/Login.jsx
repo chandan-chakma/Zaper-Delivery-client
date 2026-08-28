@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form"
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../../AuthProvider/AuthProvider.jsx';
 import SocialLogin from '../SocialLogin/SocialLogin.jsx';
 const Login = () => {
     const { signInEmailUser } = useContext(AuthContext);
+    const location = useLocation();
     const navigate= useNavigate()
     const { register, formState: { errors }, handleSubmit,  } = useForm()
     const onSubmit = (data) => {
@@ -12,7 +13,8 @@ const Login = () => {
         signInEmailUser(data.email, data.password)
             .then(result => {
                 console.log(result);
-                navigate('/')
+                // navigate('/')
+                navigate(location?.state|| '/')
             })
             .catch(error => {
                 console.log(error);
@@ -38,7 +40,7 @@ const Login = () => {
                     <button className="btn btn-neutral mt-4 w-80">Login</button>
                 </fieldset>
             </form>
-            <p className='font-semibold mt-4'>Do not have an accound please <Link className='text-blue-500' to='/registration'>Register</Link></p>
+            <p className='font-semibold mt-4'>Do not have an accound please <Link className='text-blue-500' to='/registration' state={location.state}>Register</Link></p>
             <SocialLogin></SocialLogin>
         </div>
     );

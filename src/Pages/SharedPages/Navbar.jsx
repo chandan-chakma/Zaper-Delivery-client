@@ -48,7 +48,7 @@ const Navbar = () => {
                             <button onClick={handleLogout} className='btn mr-2'>LogOut</button>
                     }
                     {/* <Link to='/login' className='btn mr-2'>Sign In</Link> */}
-                    <button className='btn btn-primary text-black hidden md:block'>Be a rider</button>
+                    <Link to='/rider' className='btn btn-primary text-black'>Be a rider</Link>
                     {/* <BsFillArrowUpRightCircleFill className='w-10 h-10 text-primary' /> */}
                     <div className="relative hidden w-[40px] h-[40px] md:block">
                         <BsCircleFill

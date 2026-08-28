@@ -6,6 +6,8 @@ import Loader from "../Components/Loader/Loader.jsx";
 import AuthLayout from "../Layouts/AuthLayout.jsx";
 import Login from "../Pages/Auth/Login/Login.jsx";
 import Registration from "../Pages/Auth/Registration/Registration.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
+import Rider from "../Rider/Rider.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +23,12 @@ export const router = createBrowserRouter([
                 Component: Coverage,
                 loader: () => fetch('/warehouses.json').then(res => res.json()),
                 hydrateFallbackElement:<Loader></Loader>
+            },
+            {
+                path: '/rider',
+                element: <PrivateRoute>
+                    <Rider></Rider>
+                </PrivateRoute>
             }
         ]
     },
