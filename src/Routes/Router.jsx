@@ -8,6 +8,7 @@ import Login from "../Pages/Auth/Login/Login.jsx";
 import Registration from "../Pages/Auth/Registration/Registration.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import Rider from "../Rider/Rider.jsx";
+import SendPercel from "../Pages/SendPercel/SendPercel.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,14 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <Rider></Rider>
                 </PrivateRoute>
+            },
+            {
+                path: '/send-percel',
+                element: <PrivateRoute>
+                    <SendPercel></SendPercel>
+                </PrivateRoute>,
+                loader: () => fetch('/warehouses.json').then(res => res.json()),
+                hydrateFallbackElement: <Loader></Loader>
             }
         ]
     },

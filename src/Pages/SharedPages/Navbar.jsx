@@ -12,10 +12,10 @@ const Navbar = () => {
         logOut()
     }
     const list = <>
-        <NavLink to="">Services</NavLink>
+        <NavLink to="/">Services</NavLink>
         <NavLink to="/coverage">Coverage</NavLink>
         <NavLink to="/login">About Us</NavLink>
-        <NavLink to="">Pricing</NavLink>
+        <NavLink to="/send-percel">Send Percel</NavLink>
         <NavLink to="">Blog</NavLink>
         <NavLink to="">Contact</NavLink>
     </>
