@@ -7,6 +7,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const MyPurcels = () => {
     const { user } = UseAuth();
@@ -15,13 +16,13 @@ const MyPurcels = () => {
         queryKey: ['my-percels', user?.email],
         queryFn: async () => {
             const res =await axiosSecure.get(`/percels?email=${user.email}`);
-            console.log(res.data);
+            // console.log(res.data);
             return res.data;
         }
     })
 
     const handleDeletePercel = (id) => {
-        console.log(id);
+        // console.log(id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -34,7 +35,7 @@ const MyPurcels = () => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/percels/${id}`)
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         if (res.data.deletedCount) {
                             // refresh the data ui 
                             refetch();
@@ -63,7 +64,8 @@ const MyPurcels = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Cost</th>
-                            <th>Favorite Color</th>
+                            <th>Payment Status</th>
+                            <th>Delivery Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -75,7 +77,19 @@ const MyPurcels = () => {
                                     <th>{index+1}</th>
                                     <td>{percel.percelName}</td>
                                     <td>{percel.costs}</td>
-                                    <td>Blue</td>
+                                    <td>
+                                        {
+                                            percel.paymentStatus === 'paid' ? <span>
+                                                Paid
+                                            </span> : <Link to={`/dashboard/payment/${percel._id}`}>
+                                                <button className='btn btn-sm btn-primary text-black'>
+                                                    Pay
+                                                </button>
+                                            </Link>
+                                        }
+                                    </td>
+                                 
+                                    <td>{percel.deliveryStatus}</td>
                                     <td>
                                         <button className="btn btn-square mr-2">
                                             <FaMagnifyingGlass />

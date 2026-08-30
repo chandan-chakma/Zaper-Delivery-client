@@ -11,6 +11,9 @@ import Rider from "../Rider/Rider.jsx";
 import SendPercel from "../Pages/SendPercel/SendPercel.jsx";
 import DashboardLayout from "../Layouts/DashboardLayout.jsx";
 import MyPurcels from "../Pages/Dashboard/MyPurcels/MyPurcels.jsx";
+import Payment from "../Pages/Dashboard/Payment/Payment.jsx";
+import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess.jsx";
+import PaymentCancel from "../Pages/Dashboard/Payment/PaymentCancel.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -68,6 +71,18 @@ export const router = createBrowserRouter([
                 path: 'my-purcels',
                 Component:MyPurcels
                 
+            },
+            {
+                path: 'payment/:percelId',
+                Component:Payment
+            },
+            {
+                path: 'payment-success',
+                Component:PaymentSuccess
+            },
+            {
+                path: 'payment-cancel',
+                Component:PaymentCancel
             }
         ]
     }
