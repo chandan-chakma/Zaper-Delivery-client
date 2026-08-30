@@ -18,6 +18,14 @@ const Navbar = () => {
         <NavLink to="/send-percel">Send Percel</NavLink>
         <NavLink to="">Blog</NavLink>
         <NavLink to="">Contact</NavLink>
+
+        {
+            user && <>
+                <NavLink to="/dashboard/my-purcels">My Purcels</NavLink>
+                {/* <NavLink to="">Blog</NavLink>
+                <NavLink to="">Contact</NavLink> */}
+                </>
+        }
     </>
     return (
         <div>

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2'
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure.jsx';
+import axios from 'axios';
+import UseAuth from '../../Hooks/UseAuth.jsx';
 const SendPercel = () => {
+    const {user} = UseAuth()
+    const axiosSecure = UseAxiosSecure()
     const { register, handleSubmit,watch, formState: { errors } } = useForm();
     const serviceCenter = useLoaderData();
     // console.log(serviceCenter)
@@ -43,6 +48,7 @@ const SendPercel = () => {
             }
         }
         console.log('total cost ', cost)
+        data.costs = cost;
         Swal.fire({
             title: "Agree to the cost?",
             text: `Your total Cost is ${cost} taka`,
@@ -52,14 +58,25 @@ const SendPercel = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Pay!"
         }).then((result) => {
-            if (result.isConfirmed) Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
+            if (result.isConfirmed) {
+
+                axiosSecure.post('/percels', data)
+                    .then(res => {
+                        console.log('after saving ', res.data)
+                       
+                        // if(res)
+                })
+                // if use want topay we will proceed other thinlk 
+                // Swal.fire({
+                //     title: "Deleted!",
+                //     text: "Your file has been deleted.",
+                //     icon: "success"
+                // });
+            } 
         });
 
     }
+
     return (
         <div className='p-10'>
             <h1 className='text-secondary font-bold  text-3xl '>Send A Percel</h1>
@@ -92,10 +109,10 @@ const SendPercel = () => {
                         <h1 className='text-black font-bold text-secondary text-xl'>Sender Details</h1>
                         
                         <label className="label">Sender Name</label>
-                        <input type="text" className="input w-full" {...register('senderName')} placeholder="Sender Name" />
+                        <input type="text" className="input w-full" {...register('senderName')} placeholder="Sender Name" defaultValue={user?.displayName} />
 
                         <label className="label">Sender Email</label>
-                        <input type="text" className="input w-full" {...register('email')} placeholder="Sender Email" />
+                        <input type="text" className="input w-full" {...register('senderEmail')} placeholder="Sender Email" defaultValue={user?.email}/>
                   
                         <label className="label">Address</label>
                         <input type="text" className="input w-full" {...register('senderAddress')} placeholder="Address" />
@@ -122,7 +139,7 @@ const SendPercel = () => {
                         <label className="label">Receiver Name</label>
                         <input type="text" className="input w-full" {...register('receiverName')} placeholder="receiver Name" />
                         <label className="label">Receiver Email</label>
-                        <input type="text" className="input w-full" {...register('email')} placeholder="Receiver Email" />
+                        <input type="text" className="input w-full" {...register('receiverEmail')} placeholder="Receiver Email" />
                        
                         <label className="label">Address</label>
                         <input type="text" className="input w-full" {...register('receiverAddress')} placeholder="Address" />
