@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdOutlineDeliveryDining } from 'react-icons/md';
+import { MdOutlineDeliveryDining, MdOutlineWorkHistory } from 'react-icons/md';
 import { Link, NavLink, Outlet } from 'react-router';
 
 const DashboardLayout = () => {
@@ -44,6 +44,12 @@ const DashboardLayout = () => {
                                 <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Percels" to='/dashboard/my-purcels'>
                                     <MdOutlineDeliveryDining className="my-1.5 inline-block size-4" />
                                     <span className="is-drawer-close:hidden">My Percels</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Percels" to='/dashboard/payment-history'>
+                                    <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
+                                    <span className="is-drawer-close:hidden">Payment History</span>
                                 </NavLink>
                             </li>
 

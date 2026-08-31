@@ -14,6 +14,7 @@ import MyPurcels from "../Pages/Dashboard/MyPurcels/MyPurcels.jsx";
 import Payment from "../Pages/Dashboard/Payment/Payment.jsx";
 import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess.jsx";
 import PaymentCancel from "../Pages/Dashboard/Payment/PaymentCancel.jsx";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
             {
                 path: 'payment-cancel',
                 Component:PaymentCancel
+            },
+            {
+                path: 'payment-history',
+                Component:PaymentHistory
             }
         ]
     }

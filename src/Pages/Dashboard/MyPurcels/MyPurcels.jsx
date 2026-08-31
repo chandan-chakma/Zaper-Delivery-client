@@ -117,7 +117,7 @@ const MyPurcels = () => {
                                         <button className="btn btn-square mr-2">
                                             <FaEdit />
                                         </button>
-                                        <button onClick={()=>{handleDeletePercel(percel)}} className="btn btn-square mr-2">
+                                        <button onClick={()=>{handleDeletePercel(percel._id)}} className="btn btn-square mr-2">
                                             <MdDelete />
                                         </button>
                                     </td>
