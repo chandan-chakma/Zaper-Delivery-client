@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2'
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure.jsx';
 import axios from 'axios';
 import UseAuth from '../../Hooks/UseAuth.jsx';
 const SendPercel = () => {
+    const navigate = useNavigate()
     const {user} = UseAuth()
     const axiosSecure = UseAxiosSecure()
     const { register, handleSubmit,watch, formState: { errors } } = useForm();
@@ -62,7 +63,19 @@ const SendPercel = () => {
 
                 axiosSecure.post('/percels', data)
                     .then(res => {
-                        console.log('after saving ', res.data)
+                        console.log('after saving ', res.data);
+                        if (res.data.insertedId) {
+                            navigate('/dashboard/my-purcels')
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Pleace pay ",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            
+                            
+                        }
                        
                         // if(res)
                 })

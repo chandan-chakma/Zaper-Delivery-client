@@ -53,6 +53,20 @@ const MyPurcels = () => {
         });
 
     }
+
+
+    const handlePostPaymetn = async (percel) => {
+        const paymentInfo = {
+            costs: percel.costs,
+            percelId: percel._id,
+            senderEmail: percel.senderEmail,
+            percelName: percel.percelName
+        }
+        const res = await axiosSecure.post('/payment-checkout-seccion', paymentInfo)
+        console.log(res.data);
+        window.location.href = res.data.url;
+
+    }
     return (
         <div className='m-10'>
             <h1 className='font-bold text-3xl text-secondary'>My Purcels {percels.length}</h1>
@@ -79,13 +93,19 @@ const MyPurcels = () => {
                                     <td>{percel.costs}</td>
                                     <td>
                                         {
-                                            percel.paymentStatus === 'paid' ? <span>
+                                            percel.paymentStatus === 'paid' ? <span className='btn btn-sm btn-success'>
                                                 Paid
-                                            </span> : <Link to={`/dashboard/payment/${percel._id}`}>
-                                                <button className='btn btn-sm btn-primary text-black'>
+                                            </span> : 
+                                                <button onClick={()=>handlePostPaymetn(percel)} className='btn btn-sm btn-primary text-black'>
                                                     Pay
                                                 </button>
-                                            </Link>
+
+                                               
+                                            // <Link to={`/dashboard/payment/${percel._id}`}>
+                                            //     <button className='btn btn-sm btn-primary text-black'>
+                                            //         Pay
+                                            //     </button>
+                                            // </Link> 
                                         }
                                     </td>
                                  
@@ -97,7 +117,7 @@ const MyPurcels = () => {
                                         <button className="btn btn-square mr-2">
                                             <FaEdit />
                                         </button>
-                                        <button onClick={()=>{handleDeletePercel(percel._id)}} className="btn btn-square mr-2">
+                                        <button onClick={()=>{handleDeletePercel(percel)}} className="btn btn-square mr-2">
                                             <MdDelete />
                                         </button>
                                     </td>
