@@ -47,7 +47,7 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Percels" to='/dashboard/payment-history'>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History" to='/dashboard/payment-history'>
                                     <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
                                     <span className="is-drawer-close:hidden">Payment History</span>
                                 </NavLink>
