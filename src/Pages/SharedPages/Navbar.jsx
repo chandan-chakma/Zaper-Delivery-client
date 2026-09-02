@@ -3,11 +3,11 @@ import Logo from '../../Components/Home/Logo/Logo.jsx';
 import { Link, NavLink } from 'react-router';
 import { BsArrowUpRight, BsCircleFill, BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import UseAuth from '../../Hooks/UseAuth.jsx';
-import { AuthContext } from '../../AuthProvider/AuthProvider.jsx';
+
 
 
 const Navbar = () => {
-    const { user, logOut } = UseAuth(AuthContext);
+    const { user, logOut } = UseAuth();
     const handleLogout = () => {
         logOut()
     }

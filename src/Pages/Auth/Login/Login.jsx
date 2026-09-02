@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form"
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../../AuthProvider/AuthProvider.jsx';
 import SocialLogin from '../SocialLogin/SocialLogin.jsx';
+import UseAuth from '../../../Hooks/UseAuth.jsx';
 const Login = () => {
-    const { signInEmailUser } = useContext(AuthContext);
+    const { signInEmailUser } = UseAuth();
     const location = useLocation();
     const navigate= useNavigate()
     const { register, formState: { errors }, handleSubmit,  } = useForm()
