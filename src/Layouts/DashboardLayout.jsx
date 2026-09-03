@@ -53,6 +53,19 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
 
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Aprvoe Riders" to='/dashboard/approve-riders'>
+                                    <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
+                                    <span className="is-drawer-close:hidden">Aprove Riders</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Users Management" to='/dashboard/users-management'>
+                                    <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
+                                    <span className="is-drawer-close:hidden">Users Management</span>
+                                </NavLink>
+                            </li>
+
                             {/* List item */}
                             <li>
                                 <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">

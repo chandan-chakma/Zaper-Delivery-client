@@ -1,12 +1,29 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../AuthProvider/AuthProvider.jsx';
+// import { AuthContext } from '../../../AuthProvider/AuthProvider.jsx';
+import UseAuth from '../../../Hooks/UseAuth.jsx';
+import UseAxiosSecure from '../../../Hooks/UseAxiosSecure.jsx';
+import { useNavigate } from 'react-router';
 
 const SocialLogin = () => {
-    const { loginWithGoogle } = useContext(AuthContext);
+    const { loginWithGoogle } = UseAuth();
+    const axiosSecure = UseAxiosSecure();
+    const navigate = useNavigate()
+
     const handleLoginGoogle = () => {
         loginWithGoogle()
             .then(result => {
-                console.log(result);
+                // console.log(result);
+                const userInfo = {
+                    email: result.user.email,
+                    displayName: result.user.name,
+                    photoURL: result.user.photoURL
+                }
+                axiosSecure.post('/users', userInfo)
+                    .then(res => {
+                        console.log('socila user have bedd added ', res.data);
+                        navigate(location.state || '/')
+                    })
+               
             })
             .catch(error => {
                 console.log(error);

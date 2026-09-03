@@ -15,6 +15,8 @@ import Payment from "../Pages/Dashboard/Payment/Payment.jsx";
 import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess.jsx";
 import PaymentCancel from "../Pages/Dashboard/Payment/PaymentCancel.jsx";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory.jsx";
+import ApproveRiders from "../Pages/Dashboard/ApproveRiders/ApproveRiders.jsx";
+import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -35,8 +37,12 @@ export const router = createBrowserRouter([
                 path: '/rider',
                 element: <PrivateRoute>
                     <Rider></Rider>
-                </PrivateRoute>
+                </PrivateRoute>,
+                loader: () => fetch('/warehouses.json').then(res => res.json()),
+                hydrateFallbackElement: <Loader></Loader>
             },
+          
+
             {
                 path: '/send-percel',
                 element: <PrivateRoute>
@@ -88,6 +94,14 @@ export const router = createBrowserRouter([
             {
                 path: 'payment-history',
                 Component:PaymentHistory
+            },
+            {
+                path: 'approve-riders',
+                Component: ApproveRiders
+            },
+            {
+                path: 'users-management',
+                Component:UsersManagement
             }
         ]
     }

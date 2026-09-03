@@ -5,10 +5,13 @@ import UseAuth from '../../../Hooks/UseAuth.jsx';
 import SocialLogin from '../SocialLogin/SocialLogin.jsx';
 import axios from "axios";
 import { AuthContext } from '../../../AuthProvider/AuthProvider.jsx';
+import UseAxiosSecure from '../../../Hooks/UseAxiosSecure.jsx';
 const Registration = () => {
     const location = useLocation();
-    const navigate = useNavigate()
-    console.log(location)
+    const navigate = useNavigate();
+
+    const axiosSecure = UseAxiosSecure();
+    // console.log(location)
 
     const { createEmailUser, uodateUserProfile, emailVerfication } = UseAuth(AuthContext);
     const { register, formState: { errors }, handleSubmit,  } = useForm()
@@ -28,6 +31,19 @@ const Registration = () => {
                 axios.post(url, formData)
                     .then(res => {
                         console.log('after upload imag', res);
+                        const userInfo = {
+                            email: data.email,
+                            displayName: data.name,
+                            photoURL: res.data.data.url
+                        }
+                        // post User 
+                        axiosSecure.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                console.log('user created in the database')
+                            }
+                        })
+                        
 
                         // send the update user profile to firebase 
                         const userProfile = {
@@ -38,8 +54,8 @@ const Registration = () => {
                         uodateUserProfile(userProfile)
                             .then(() => {
                                 console.log('user profile update');
-                                emailVerfication()
-                                    .then(() => {
+                                // emailVerfication()
+                                //     .then(() => {
                                         // email verficatin 
                                         // const checkVerification = setInterval(async () => {
                                         //     try {
@@ -52,9 +68,9 @@ const Registration = () => {
                                         //     }
                                         //     catch (error) { clearInterval(checkVerification); console.log(error); }
                                         // }, 3000);
-                                    })
-                                .catch(error=>console.log(error))
-                                // navigate(location.state || '/')
+                                    // })
+                                // .catch(error=>console.log(error))
+                                navigate(location.state || '/')
                             })
                             .catch(error => {
                             console.log(error)
