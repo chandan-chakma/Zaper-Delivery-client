@@ -1,22 +1,30 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import UseAxiosSecure from '../../../Hooks/UseAxiosSecure.jsx';
 import { FaUserShield } from 'react-icons/fa';
 import { FiShieldOff } from 'react-icons/fi';
 import Swal from 'sweetalert2';
 
 const UsersManagement = () => {
+    const [search, setSearch] = useState();
+
     const axiosSecure = UseAxiosSecure();
     const {data:users=[] ,refetch} = useQuery({
-        queryKey: ['users'],
+        queryKey: ['users',search],
         queryFn: async() => {
-            const res = await axiosSecure.get('/users')
+            const res = await axiosSecure.get(`/users?search=${search}`)
             // console.log(res.data)
             return res.data;
     
         }
     })
 
+    const SearchUser = (e) => {
+        const searching = e.target.value;
+        console.log(searching)
+        setSearch(searching);
+    }
+    
     const handleMakeUser = (user) => {
         const roleInfo = { role: 'user' }
         axiosSecure.patch(`/users/${user._id}/role`, roleInfo)
@@ -80,6 +88,22 @@ const UsersManagement = () => {
         <div>
             <h1>user Mangement</h1>
             <p>{users.length}</p>
+            <label className="input ml-5">
+                <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="2.5"
+                        fill="none"
+                        stroke="currentColor"
+                    >
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </g>
+                </svg>
+                <input onChange={SearchUser} type="search" required placeholder="Search user" />
+            </label>
+
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
