@@ -1,8 +1,10 @@
 import React from 'react';
 import { MdOutlineDeliveryDining, MdOutlineWorkHistory } from 'react-icons/md';
 import { Link, NavLink, Outlet } from 'react-router';
+import UseRole from '../Hooks/UseRole.jsx';
 
 const DashboardLayout = () => {
+    const {role} = UseRole()
     return (
         <div className='max-w-7xl mx-auto'>
             {/* <h2>DashBoard Layout</h2> */}
@@ -52,19 +54,24 @@ const DashboardLayout = () => {
                                     <span className="is-drawer-close:hidden">Payment History</span>
                                 </NavLink>
                             </li>
+                            {
+                                role === 'admin' && <>
+                                    <li>
+                                        <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Aprvoe Riders" to='/dashboard/approve-riders'>
+                                            <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
+                                            <span className="is-drawer-close:hidden">Aprove Riders</span>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Users Management" to='/dashboard/users-management'>
+                                            <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
+                                            <span className="is-drawer-close:hidden">Users Management</span>
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
 
-                            <li>
-                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Aprvoe Riders" to='/dashboard/approve-riders'>
-                                    <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
-                                    <span className="is-drawer-close:hidden">Aprove Riders</span>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Users Management" to='/dashboard/users-management'>
-                                    <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
-                                    <span className="is-drawer-close:hidden">Users Management</span>
-                                </NavLink>
-                            </li>
+                            
 
                             {/* List item */}
                             <li>
