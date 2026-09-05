@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useRef, useState } from 'react';
 import UseAxiosSecure from '../../../Hooks/UseAxiosSecure.jsx';
+import Swal from 'sweetalert2';
 
 const AssignRider = () => {
     const axiosSecure = UseAxiosSecure();
@@ -11,7 +12,7 @@ const AssignRider = () => {
         ridermodalRef.current.showModal();
     }
     // data loade query for percel peniding delviery wise 
-    const {data:percels=[] } = useQuery({
+    const {data:percels=[], refetch:percelRefetch } = useQuery({
         queryKey: ['percles', 'pending'],
         queryFn: async () => {
             const res = await axiosSecure.get('/percels?deliveryStatus=peniding')
@@ -21,7 +22,7 @@ const AssignRider = () => {
     })
 
     // in open modal we need to assign rider so we need to make rider query for load rider 
-    const {data:riders=[] } = useQuery({
+    const {data:riders=[]} = useQuery({
         queryKey: ['riders', seletedPercel?.senderDistrict,'Available'],
         enabled:!!seletedPercel, //when click rider then it willopen rider info so it will not reloas with percel info
         queryFn: async () => {
@@ -35,11 +36,24 @@ const AssignRider = () => {
     const handleAssignRider = (rider) => {
         const riderAssignInfo = {
             riderId: rider._id,
-            rederEmail: rider.email,
+            riderEmail: rider.email,
             riderName: rider.riderName,
             percelId :seletedPercel._id
         }
-        axiosSecure.patch(``, riderAssignInfo)
+        axiosSecure.patch(`/percels/${seletedPercel._id}`, riderAssignInfo)
+            .then(res => {
+                ridermodalRef.current.close()
+                percelRefetch()
+                if (res.data.modifyCount) {
+                    Swal.fire({
+                        position: "cemter",
+                        icon: "success",
+                        title: "rider has assign",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+            }
+        })
     }
     return (
         <div>
