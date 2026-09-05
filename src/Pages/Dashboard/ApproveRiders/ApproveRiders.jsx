@@ -87,7 +87,8 @@ const ApproveRiders = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>District</th>
-                        <th>Status</th>
+                        <th>Application Status</th>
+                        <th>Work Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,6 +109,7 @@ const ApproveRiders = () => {
                                     }
 
                                 </td>
+                                <td>{rider.workStatus}</td>
                                 <td>
                                     <button onClick={()=>handleApproved(rider)} className="btn btn-square mr-2">
                                         <TiTick />

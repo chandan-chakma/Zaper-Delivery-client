@@ -68,6 +68,12 @@ const DashboardLayout = () => {
                                             <span className="is-drawer-close:hidden">Users Management</span>
                                         </NavLink>
                                     </li>
+                                    <li>
+                                        <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assign Rider" to='/dashboard/assign-riders'>
+                                            <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
+                                            <span className="is-drawer-close:hidden">Assign RIder</span>
+                                        </NavLink>
+                                    </li>
                                 </>
                             }
 

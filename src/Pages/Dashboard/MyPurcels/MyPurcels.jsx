@@ -80,6 +80,7 @@ const MyPurcels = () => {
                             <th>Cost</th>
                             <th>Payment Status</th>
                             <th>Delivery Status</th>
+                            <th>Tracking Number</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -110,6 +111,7 @@ const MyPurcels = () => {
                                     </td>
                                  
                                     <td>{percel.deliveryStatus}</td>
+                                    <td>{percel.trackingId}</td>
                                     <td>
                                         <button className="btn btn-square mr-2">
                                             <FaMagnifyingGlass />
