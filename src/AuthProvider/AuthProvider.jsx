@@ -62,8 +62,9 @@ const AuthProvider = ({ children }) => {
             //     })
             //     .then(res=>console.log(res.data))
             // }
-            setLoding(false)
+           
             }
+            setLoding(false)
         })
         return ()=> unSubcribe()
         

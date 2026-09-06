@@ -62,7 +62,7 @@ const ApproveRiders = () => {
                          .then(res => {
                              //  console.log(res);
                              if (res.data.deletedCount) {
-                                 refetch()
+                                 refetch();
                                    Swal.fire({
                                          title: "Deleted!",
                                          text: "Your percel has been deleted.",

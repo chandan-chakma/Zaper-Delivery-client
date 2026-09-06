@@ -15,7 +15,8 @@ const Login = () => {
             .then(result => {
                 console.log(result);
                 // navigate('/')
-                navigate(location?.state|| '/')
+                navigate(location?.state || '/')
+                // console.log(navigate)
             })
             .catch(error => {
                 console.log(error);

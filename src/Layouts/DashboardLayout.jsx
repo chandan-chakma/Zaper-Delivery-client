@@ -54,6 +54,8 @@ const DashboardLayout = () => {
                                     <span className="is-drawer-close:hidden">Payment History</span>
                                 </NavLink>
                             </li>
+
+                            {/* if role is admin  */}
                             {
                                 role === 'admin' && <>
                                     <li>
@@ -73,11 +75,28 @@ const DashboardLayout = () => {
                                             <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
                                             <span className="is-drawer-close:hidden">Assign RIder</span>
                                         </NavLink>
-                                    </li>
+                                    </li>1
                                 </>
                             }
 
-                            
+                            {/* if role is rider  */}
+
+                            {
+                                role === 'rider' && <>
+                                    <li>
+                                        <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assign Deliveries" to='/dashboard/assign-deliveries'>
+                                            <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
+                                            <span className="is-drawer-close:hidden">Assign Deliveries</span>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Complete Deliveries" to='/dashboard/complete-deliveries'>
+                                            <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
+                                            <span className="is-drawer-close:hidden">Complete Deliveries</span>
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
 
                             {/* List item */}
                             <li>
