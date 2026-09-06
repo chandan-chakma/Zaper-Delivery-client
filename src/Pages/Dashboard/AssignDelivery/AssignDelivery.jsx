@@ -19,7 +19,8 @@ const AssignDelivery = () => {
     const handleDeliveryStatusUpdate = (percel,status) => {
         const statusInfo = {
             deliveryStatus: status,
-           riderId: percel.riderId
+            riderId: percel.riderId,
+           trackingId: percel.trackingId
         }
         let message = `percet statud is updated with ${status.split('_').join(' ') }`
         axiosSecure.patch(`/percels/${percel._id}/status`, statusInfo)

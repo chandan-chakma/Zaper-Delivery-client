@@ -22,6 +22,7 @@ import AssignRider from "../Pages/Dashboard/AssignRider/AssignRider.jsx";
 import AssignDelivery from "../Pages/Dashboard/AssignDelivery/AssignDelivery.jsx";
 import RiderRoute from "./RiderRoute.jsx";
 import CompleteDeliveries from "../Pages/Dashboard/CompleteDeliveries/CompleteDeliveries.jsx";
+import PercelTracking from "../Pages/PercelTracking/PercelTracking.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
                 </PrivateRoute>,
                 loader: () => fetch('/warehouses.json').then(res => res.json()),
                 hydrateFallbackElement: <Loader></Loader>
+            },
+            {
+                path: 'percel-tracking/:trackingId',
+                Component:PercelTracking
             }
         ]
     },

@@ -111,7 +111,10 @@ const MyPurcels = () => {
                                     </td>
                                  
                                     <td>{percel.deliveryStatus}</td>
-                                    <td>{percel.trackingId}</td>
+                                    <td>
+                                        <Link to={`/percel-tracking/${percel.trackingId}`}> {percel.trackingId}</Link>
+                                       
+                                    </td>
                                     <td>
                                         <button className="btn btn-square mr-2">
                                             <FaMagnifyingGlass />
