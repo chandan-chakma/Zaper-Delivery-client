@@ -23,6 +23,7 @@ import AssignDelivery from "../Pages/Dashboard/AssignDelivery/AssignDelivery.jsx
 import RiderRoute from "./RiderRoute.jsx";
 import CompleteDeliveries from "../Pages/Dashboard/CompleteDeliveries/CompleteDeliveries.jsx";
 import PercelTracking from "../Pages/PercelTracking/PercelTracking.jsx";
+import DashBoardHome from "../Pages/Dashboard/DashboardHome/DashBoardHome.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -84,6 +85,11 @@ export const router = createBrowserRouter([
             <DashboardLayout></DashboardLayout>
         </PrivateRoute>,
         children: [
+            {
+                index: true,
+                Component:DashBoardHome
+            
+        },
             {
                 path: 'my-purcels',
                 Component:MyPurcels

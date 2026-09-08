@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import UseAuth from './UseAuth.jsx';
 
 const axiosSecure = axios.create({
-    baseURL:'http://localhost:3000'
+    baseURL:'https://zaper-server.vercel.app'
 })
 
 const UseAxiosSecure = () => {

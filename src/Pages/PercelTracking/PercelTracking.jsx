@@ -9,7 +9,7 @@ const PercelTracking = () => {
         queryKey: ['tracking', trackingId],
         queryFn:
             async () => {
-                const res = await axios.get(`http://localhost:3000/percel-tracking/${trackingId}/logs`)
+                const res = await axios.get(`https://zaper-server.vercel.app/percel-tracking/${trackingId}/logs`)
                 console.log(res.data);
                 return res.data
             }

@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 // get email 
                 const logUser= {email: currentUser.email}
-                fetch('http://localhost:3000/getToken', {
+                fetch('https://zaper-server.vercel.app/getToken', {
                     method: "POST",
                     headers: {
                         'content-type':'application/json'
