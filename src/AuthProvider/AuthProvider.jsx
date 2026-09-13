@@ -39,33 +39,52 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubcribe = onAuthStateChanged(auth, (currentUser) => {
+            // if (currentUser) {
             setUser(currentUser);
-            console.log('Auth state changed:', currentUser?.email);
-            
             if (currentUser) {
+                // get email 
                 const logUser = { email: currentUser.email }
-                console.log('Requesting token for:', logUser.email);
                 
-                axios.post('https://zaper-server.vercel.app/getToken', logUser, {
-                    withCredentials: true
+                // axios.post('https://zaper-server.vercel.app/getToken', logUser, {
+                //     withCredentials: true
+                // })
+                //     .then(res => {
+                //         console.log('✅ Token received:', res.data);
+                //         console.log('✅ Status:', res.status);
+                //         setLoding(false);
+                //     })
+                //     .catch(err => {
+                //         console.error('❌ Token request failed:', {
+                //             status: err.response?.status,
+                //             message: err.message,
+                //             data: err.response?.data
+                //         });
+                //         setLoding(false);
+                //     })
+                fetch('https://zaper-server.vercel.app/getToken', {
+                    method: "POST",
+                    headers: {
+                        'content-type':'application/json'
+                    },
+                    credentials:'include',
+                    body: JSON.stringify(logUser)
                 })
-                    .then(res => {
-                        console.log('✅ Token received:', res.data);
-                        console.log('✅ Status:', res.status);
-                        setLoding(false);
-                    })
-                    .catch(err => {
-                        console.error('❌ Token request failed:', {
-                            status: err.response?.status,
-                            message: err.message,
-                            data: err.response?.data
-                        });
-                        setLoding(false);
-                    })
-            } else {
-                console.log('No user - setting loading to false');
-                setLoding(false);
+                    .then(res => res.json())
+                    .then(data => {
+                        // localStorage.setItem('token',data.token)
+                    console.log(data)
+                })
+
+                
+                // try to use axios 
+            //     axiosSecure.post('/getToken', {
+                    
+            //     })
+            //     .then(res=>console.log(res.data))
+            // }
+           
             }
+            setLoding(false)
         })
         return ()=> unSubcribe()
         

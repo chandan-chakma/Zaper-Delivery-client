@@ -25,8 +25,8 @@ const AdminDashboard = () => {
 
 
     return (
-        <div>
-            <h1>Admin Dashboard</h1>
+        <div className='px-10'>
+            <h1 className='text-2xl font-bold text-secondary my-5'>Admin Dashboard</h1>
             <div className="stats shadow">
                 {
                     deliverySatus.map(stat =>

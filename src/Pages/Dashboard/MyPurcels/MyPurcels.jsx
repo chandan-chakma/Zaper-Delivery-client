@@ -69,7 +69,7 @@ const MyPurcels = () => {
     }
     return (
         <div className='m-10'>
-            <h1 className='font-bold text-3xl text-secondary'>My Purcels {percels.length}</h1>
+            <h1 className='font-bold text-3xl text-secondary my-5'>My Purcels</h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
