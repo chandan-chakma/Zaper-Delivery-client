@@ -17,9 +17,9 @@ const PaymentHistory = () => {
         enabled: !!user && !loading
     })
     return (
-        <div>
+        <div className='px-10'>
             <h1 className='text-secondary font-bold text-2xl my-8'>Payment History</h1>
-            <p>{payments.length}</p>
+            {/* <p>{payments.length}</p> */}
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}

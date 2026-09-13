@@ -86,8 +86,8 @@ const UsersManagement = () => {
     }
     return (
         <div>
-            <h1>user Mangement</h1>
-            <p>{users.length}</p>
+            <h1 className='text-2xl font-bold text-secondary my-4'>user Mangement</h1>
+            {/* <p>{users.length}</p> */}
             <label className="input ml-5">
                 <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g
