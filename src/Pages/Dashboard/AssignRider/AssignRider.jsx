@@ -57,9 +57,9 @@ const AssignRider = () => {
         })
     }
     return (
-        <div>
+        <div className='p-10'>
             <h1 className='text-2xl font-bold text-secondary'>Assign Rider</h1>
-            <p>{percels.length}</p>
+            {/* <p>{percels.length}</p> */}
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

@@ -76,9 +76,9 @@ const ApproveRiders = () => {
         })
     }
     return (
-        <div>
+        <div className='p-10'>
             <h1 className='text-3xl font-bold text-secondary'>Approved Riders</h1>
-            <p>{riders.length}</p>
+            {/* <p>{riders.length}</p> */}
             <table className="table table-zebra">
                 {/* head */}
                 <thead>
