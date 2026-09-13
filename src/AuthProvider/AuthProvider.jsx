@@ -1,12 +1,15 @@
 import React, { Children, createContext, useContext, useEffect, useState } from 'react';
 import {createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from '../Firebase/Firebase.config.js';
-import UseAxiosSecure from '../Hooks/UseAxiosSecure.jsx';
-export const AuthContext = createContext();
+import axios from 'axios';
+import { AuthContext } from './AuthContext.jsx';
+
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
+    // const axiosSecure = UseAxiosSecure() do not use
     const [user, setUser] = useState(null);
-    const [loading, setLoding] = useState(true)
+    const [loading, setLoding] = useState(true);
+    
 
     const createEmailUser = (email, password) => {
         setLoding(true)
@@ -36,35 +39,33 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubcribe = onAuthStateChanged(auth, (currentUser) => {
-            // if (currentUser) {
             setUser(currentUser);
+            console.log('Auth state changed:', currentUser?.email);
+            
             if (currentUser) {
-                // get email 
-                const logUser= {email: currentUser.email}
-                fetch('https://zaper-server.vercel.app/getToken', {
-                    method: "POST",
-                    headers: {
-                        'content-type':'application/json'
-                    },
-                    credentials:'include',
-                    body: JSON.stringify(logUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        // localStorage.setItem('token',data.token)
-                    console.log(data)
-                })
-
+                const logUser = { email: currentUser.email }
+                console.log('Requesting token for:', logUser.email);
                 
-                // try to use axios 
-            //     axiosSecure.post('/getToken', {
-                    
-            //     })
-            //     .then(res=>console.log(res.data))
-            // }
-           
+                axios.post('https://zaper-server.vercel.app/getToken', logUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log('✅ Token received:', res.data);
+                        console.log('✅ Status:', res.status);
+                        setLoding(false);
+                    })
+                    .catch(err => {
+                        console.error('❌ Token request failed:', {
+                            status: err.response?.status,
+                            message: err.message,
+                            data: err.response?.data
+                        });
+                        setLoding(false);
+                    })
+            } else {
+                console.log('No user - setting loading to false');
+                setLoding(false);
             }
-            setLoding(false)
         })
         return ()=> unSubcribe()
         

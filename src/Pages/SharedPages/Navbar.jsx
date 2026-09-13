@@ -14,7 +14,7 @@ const Navbar = () => {
     const list = <>
         <NavLink to="/">Services</NavLink>
         <NavLink to="/coverage">Coverage</NavLink>
-        <NavLink to="/login">About Us</NavLink>
+        <NavLink to="/aboutus">About Us</NavLink>
         <NavLink to="/send-percel">Send Percel</NavLink>
         <NavLink to="/rider">Be a Rider</NavLink>
         {/* <NavLink to='/percel-tracking'>Percel Tracking</NavLink> */}

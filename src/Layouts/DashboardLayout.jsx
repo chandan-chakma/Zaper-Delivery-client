@@ -25,7 +25,7 @@ const DashboardLayout = () => {
 
 
                     {/* Page content here */}
-                    <div className="p-4">Page Content</div>
+                    {/* <div className="p-4">Page Content</div> */}
                 </div>
 
                 <div className="drawer-side is-drawer-close:overflow-visible">
@@ -82,7 +82,7 @@ const DashboardLayout = () => {
                                             <MdOutlineWorkHistory className="my-1.5 inline-block size-4" />
                                             <span className="is-drawer-close:hidden">Assign RIder</span>
                                         </NavLink>
-                                    </li>1
+                                    </li>
                                 </>
                             }
 

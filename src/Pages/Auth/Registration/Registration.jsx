@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import UseAuth from '../../../Hooks/UseAuth.jsx';
 import SocialLogin from '../SocialLogin/SocialLogin.jsx';
 import axios from "axios";
-import { AuthContext } from '../../../AuthProvider/AuthProvider.jsx';
 import UseAxiosSecure from '../../../Hooks/UseAxiosSecure.jsx';
 const Registration = () => {
     const location = useLocation();
@@ -13,7 +12,7 @@ const Registration = () => {
     const axiosSecure = UseAxiosSecure();
     // console.log(location)
 
-    const { createEmailUser, uodateUserProfile, emailVerfication } = UseAuth(AuthContext);
+    const { createEmailUser, uodateUserProfile, emailVerfication } = UseAuth();
     const { register, formState: { errors }, handleSubmit,  } = useForm()
     const onSubmit = (data) => {
         // console.log(data);

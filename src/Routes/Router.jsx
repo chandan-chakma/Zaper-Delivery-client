@@ -24,6 +24,7 @@ import RiderRoute from "./RiderRoute.jsx";
 import CompleteDeliveries from "../Pages/Dashboard/CompleteDeliveries/CompleteDeliveries.jsx";
 import PercelTracking from "../Pages/PercelTracking/PercelTracking.jsx";
 import DashBoardHome from "../Pages/Dashboard/DashboardHome/DashBoardHome.jsx";
+import AboutUs from "../Pages/AboutUs/AboutUs.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
                 Component: Coverage,
                 loader: () => fetch('/warehouses.json').then(res => res.json()),
                 hydrateFallbackElement:<Loader></Loader>
+            },
+            {
+                path: '/aboutus',
+                Component:AboutUs
             },
             {
                 path: '/rider',

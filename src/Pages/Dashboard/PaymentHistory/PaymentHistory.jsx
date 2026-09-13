@@ -5,7 +5,7 @@ import UseAxiosSecure from '../../../Hooks/UseAxiosSecure.jsx';
 
 
 const PaymentHistory = () => {
-    const { user } = UseAuth()
+    const { user,loading } = UseAuth()
     const axiosSecure = UseAxiosSecure()
     const {data: payments=[] } = useQuery({
         queryKey: ['payments',user?.email],
@@ -13,7 +13,8 @@ const PaymentHistory = () => {
             const res = await axiosSecure.get(`/payments?email=${user.email}`)
             console.log(res);
             return res.data
-        }
+        },
+        enabled: !!user && !loading
     })
     return (
         <div>

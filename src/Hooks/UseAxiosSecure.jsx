@@ -29,16 +29,16 @@ const UseAxiosSecure = () => {
             return response;
         },
             (error) => {
-                const status = error.status; 
-                // console.log(error);
+                const status = error.response?.status; 
+                console.log('Error status:', status, error);
                 if (status === 401 || status === 403) {
-                    console.log("bad intention");
+                    console.log("Unauthorized - logging out");
                     logOut()
                         .then(() => {
                             navigate('/login')
                     })
                 }
-                return Promiss.reject(error);
+                return Promise.reject(error);
             }
         )
 
