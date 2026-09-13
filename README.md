@@ -6,14 +6,14 @@ Zaper is a comprehensive parcel delivery management web application built with *
 
 ### Homepage & Landing Page
 ![Homepage Banner](./public/images/homepage.png)
-![Services Section](./public/images/services.png)
+<!-- ![Services Section](./public/images/services.png) -->
 
 ### Authentication
-![Login Page](./public/images/login.png)
+<!-- ![Login Page](./public/images/login.png) -->
 ![Registration Page](./public/images/registration.png)
 
 ### User Dashboard
-![User Dashboard](./public/images/user-dashboard.png)
+<!-- ![User Dashboard](./public/images/user-dashboard.png) -->
 ![My Parcels](./public/images/my-parcels.png)
 ![Payment History](./public/images/payment-history.png)
 
@@ -24,7 +24,7 @@ Zaper is a comprehensive parcel delivery management web application built with *
 
 ### Rider Dashboard
 ![Rider Dashboard](./public/images/rider-dashboard.png)
-![Assign Deliveries](./public/images/assign-deliveries.png)
+<!-- ![Assign Deliveries](./public/images/assign-deliveries.png) -->
 
 ---
 
